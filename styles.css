@@ -13,19 +13,29 @@ body{
 .piano {
     display: flex;
 }
+.key {
+    height: calc(var(--width) * 4);
+    width: var(--width);
+  }
 
-.key{
-    width: 100px;
-    height: 400px;
+.white {
+    --width: 100px;
     background-color: white;
     border: 1px solid #333;
-}
+  }
+  .white.active {
+    transform: scale(.95);
+    border-color: #028ae9;
+    box-shadow: 0 0 1rem 
+  }
 
-.key-sharp{
-    width: 60px;
-    height: 240px;
+.black {
+    --width: 60px;
     background-color: black;
-    margin-left: -30px;
-    margin-right: -30px;
+    margin-left: calc(var(--width) / -2);
+    margin-right: calc(var(--width) / -2);
     z-index: 2;
-}
+  }
+  .black.active {
+    background-color: #333;
+  }
