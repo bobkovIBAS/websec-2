@@ -4,6 +4,7 @@ const BLACK_KEYS = ['a', 's', 'd', 'f', 'g','h','j']
 const keys = document.querySelectorAll('.key')
 const whiteKeys = document.querySelectorAll('.key.white')
 const blackKeys = document.querySelectorAll('.key.black')
+const hints = document.querySelectorAll(".hints");
 
 keys.forEach(key => {
   key.addEventListener('click', () => playNote(key))
@@ -28,3 +29,8 @@ function playNote(key) {
     key.classList.remove('active')
   })
 }
+function hintsOn(e, index) {
+  e.setAttribute("style", "transition-delay:" + index * 30 + "ms");
+}
+
+hints.forEach(hintsOn);

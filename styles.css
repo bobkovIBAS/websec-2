@@ -11,31 +11,89 @@ body{
     align-items: center;
 }
 .piano {
-    display: flex;
+  display: block;
+  width: 100%;
+  height: 350px;
+  max-width: 880px;
+  position: relative;
+  margin: 40px auto 0;
 }
+
+
 .key {
-    height: calc(var(--width) * 4);
-    width: var(--width);
+  position: relative;
+  border: 4px solid black;
+  border-radius: .5rem;
+  transition: all .07s ease;
+  display: block;
+  box-sizing: border-box;
+  z-index: 2;
   }
 
 .white {
-    --width: 100px;
-    background-color: white;
-    border: 1px solid #333;
+  float: left;
+  width: 10%;
+  height: 100%;
+  background: white;  
+
   }
   .white.active {
     transform: scale(.95);
     border-color: #028ae9;
-    box-shadow: 0 0 1rem 
+    box-shadow: 0 0 1rem ;
   }
-
 .black {
-    --width: 60px;
-    background-color: black;
-    margin-left: calc(var(--width) / -2);
-    margin-right: calc(var(--width) / -2);
-    z-index: 2;
+  position: absolute;
+  width: 6%;
+  height: 60%;
+  background: #000;
+  color: white;
+  top: 0;
+  z-index: 3;
+
   }
   .black.active {
-    background-color: #333;
+    transform: scale(.95);
+    border-color: #028ae9;
+    box-shadow: 0 0 1rem ;
+  }
+  .hints {
+    display: block;
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    bottom: 7px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .piano:hover .hints {
+    opacity: 1;
+  }
+
+  .key[data-key="2"] {
+    left: 7%;
+  }
+
+  .key[data-key="4"] {
+    left: 17%;
+  }
+
+  .key[data-key="7"]  {
+    left: 37%;
+  }
+
+  .key[data-key="9"] {
+    left: 47%;
+  }
+
+  .key[data-key="11"] {
+    left: 57%;    
+  }
+
+  .key[data-key="14"] {
+    left: 77%;    
+  }
+
+  .key[data-key="16"] {
+    left: 87%;    
   }
