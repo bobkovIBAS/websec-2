@@ -94,5 +94,7 @@ function recordNote(note){
   })
 }
 function saveSong(){
-  
+  axios.post('/songs',{songNotes:songNotes}).then(res=>{
+    console.log(res.data)
+  })
 }
