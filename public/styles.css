@@ -9,6 +9,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .piano {
   display: block;
@@ -97,3 +98,34 @@ body{
   .key[data-key="16"] {
     left: 87%;    
   }
+
+.buttons{
+  display: flex;
+}
+
+.button{
+  border:none;
+  font-size: 2rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+}
+.button:first-child {
+  margin-left: 0;
+}
+.record-button{
+  background-color:white;
+}
+.record-button.active{
+  background-color: red;
+}
+.button:hover{
+  background-color: rgb(85, 83, 83);
+}
+.play-button,
+.save-button{
+  display:none;
+}
+.play-button.show,
+.save-button.show{
+  display: block;
+}
