@@ -4,17 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Piano</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <script src="script.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script>
+        const currentSong = <%- JSON.stringify(locals.song) || 'undefined' %>
+    </script>
 </head>
 
 <body>
     <div class="buttons">
-        <button class="record-button button">Record</button>
-        <button class="save-button button ">Save</button>
-        <button class="play-button button">Play</button>
+        <% if (locals.song == null) { %>
+            <button class="record-button button">Record</button>
+            <button class="save-button button">Save</button>
+          <% } else { %>
+            <a href="/" class="button">Record New Song</a>
+          <% } %>
+        <button class="play-button button <%= locals.song != null ? 'show' : '' %>">Play</button>
     </div>
+    <a href="#" class="button song-link">View Song </a>
     <div class="piano ">
         <div data-key="1" data-note="C" class="key white">
             <span class="hints">Z</span>
@@ -69,23 +77,23 @@
         </div>
     </div>
 
-    <audio id="1" src="sounds/040.wav"></audio>
-    <audio id="2" src="sounds/041.wav"></audio>
-    <audio id="3" src="sounds/042.wav"></audio>
-    <audio id="4" src="sounds/043.wav"></audio>
-    <audio id="5" src="sounds/044.wav"></audio>
-    <audio id="6" src="sounds/045.wav"></audio>
-    <audio id="7" src="sounds/046.wav"></audio>
-    <audio id="8" src="sounds/047.wav"></audio>
-    <audio id="9" src="sounds/048.wav"></audio>
-    <audio id="10" src="sounds/049.wav"></audio>
-    <audio id="11" src="sounds/050.wav"></audio>
-    <audio id="12" src="sounds/051.wav"></audio>
-    <audio id="13" src="sounds/052.wav"></audio>
-    <audio id="14" src="sounds/053.wav"></audio>
-    <audio id="15" src="sounds/054.wav"></audio>
-    <audio id="16" src="sounds/055.wav"></audio>
-    <audio id="17" src="sounds/056.wav"></audio>
+    <audio id="1" src="/sounds/040.wav"></audio>
+    <audio id="2" src="/sounds/041.wav"></audio>
+    <audio id="3" src="/sounds/042.wav"></audio>
+    <audio id="4" src="/sounds/043.wav"></audio>
+    <audio id="5" src="/sounds/044.wav"></audio>
+    <audio id="6" src="/sounds/045.wav"></audio>
+    <audio id="7" src="/sounds/046.wav"></audio>
+    <audio id="8" src="/sounds/047.wav"></audio>
+    <audio id="9" src="/sounds/048.wav"></audio>
+    <audio id="10" src="/sounds/049.wav"></audio>
+    <audio id="11" src="/sounds/050.wav"></audio>
+    <audio id="12" src="/sounds/051.wav"></audio>
+    <audio id="13" src="/sounds/052.wav"></audio>
+    <audio id="14" src="/sounds/053.wav"></audio>
+    <audio id="15" src="/sounds/054.wav"></audio>
+    <audio id="16" src="/sounds/055.wav"></audio>
+    <audio id="17" src="/sounds/056.wav"></audio>
 
 </body>
 

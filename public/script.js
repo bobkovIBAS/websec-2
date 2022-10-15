@@ -5,17 +5,22 @@ const keys = document.querySelectorAll('.key')
 const whiteKeys = document.querySelectorAll('.key.white')
 const blackKeys = document.querySelectorAll('.key.black')
 const hints = document.querySelectorAll(".hints");
+
 const recordButton = document.querySelector('.record-button')
 const playButton = document.querySelector('.play-button')
 const saveButton = document.querySelector('.save-button')
+const songLink = document.querySelector('.song-link')
 
 let recordingStartTime
-let songNotes
+let songNotes = currentSong && currentSong.notes
 
 const keyMap = [...keys].reduce((map, key) => {
   map[key.dataset.note] = key
   return map
 }, {})
+
+
+console.log(currentSong)
 
 keys.forEach(key => {
   key.addEventListener('click', () => playNote(key))
@@ -47,9 +52,12 @@ function hintsOn(e, index) {
 }
 
 hints.forEach(hintsOn);
-
+if (recordButton) {
 recordButton.addEventListener('click' , Recording)
+}
+if (saveButton) {
 saveButton.addEventListener('click', saveSong)
+}
 playButton.addEventListener('click', playSong)
 
 function Recording() {
@@ -95,6 +103,7 @@ function recordNote(note){
 }
 function saveSong(){
   axios.post('/songs',{songNotes:songNotes}).then(res=>{
-    console.log(res.data)
+    songLink.classList.add('show')
+    songLink.href = `/songs/${res.data._id}`
   })
 }

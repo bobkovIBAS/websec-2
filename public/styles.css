@@ -101,6 +101,7 @@ body{
 
 .buttons{
   display: flex;
+  margin-bottom: 15px;
 }
 
 .button{
@@ -112,7 +113,8 @@ body{
 .button:first-child {
   margin-left: 0;
 }
-.record-button{
+.record-button,
+.song-link{
   background-color:white;
 }
 .record-button.active{
@@ -122,10 +124,12 @@ body{
   background-color: rgb(85, 83, 83);
 }
 .play-button,
-.save-button{
+.save-button,
+.song-link{
   display:none;
 }
 .play-button.show,
-.save-button.show{
+.save-button.show,
+.song-link.show{
   display: block;
 }
