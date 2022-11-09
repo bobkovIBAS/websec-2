@@ -10,9 +10,11 @@ const recordButton = document.querySelector('.record-button')
 const playButton = document.querySelector('.play-button')
 const saveButton = document.querySelector('.save-button')
 const songLink = document.querySelector('.song-link')
+const nameOfSongInput = document.querySelector('.input-nameOfSong')
 
 let recordingStartTime
 let songNotes = currentSong && currentSong.notes
+let songName = "Name Of Songs"
 
 const keyMap = [...keys].reduce((map, key) => {
   map[key.dataset.note] = key
@@ -78,12 +80,15 @@ function startRecording(){
   songNotes=[]
   playButton.classList.remove('show')
   saveButton.classList.remove('show')
+  nameOfSongInput.classList.remove('show')
+  
 }
 
 function stopRecording(){
   playSong()
   playButton.classList.add('show')
   saveButton.classList.add('show')
+  nameOfSongInput.classList.add('show')
 }
 
 function playSong(){
@@ -99,10 +104,13 @@ function recordNote(note){
   songNotes.push({
     key:note,
     startTime: Date.now() - recordingStartTime
-  })
+  }
+  )
 }
 function saveSong(){
-  axios.post('/songs',{songNotes:songNotes}).then(res=>{
+  var nameOfSong = document.getElementById('nameOfSong').value;
+  songName = nameOfSong;
+  axios.post('/songs',{songNotes:songNotes,songName}).then(res=>{
     songLink.classList.add('show')
     songLink.href = `/songs/${res.data._id}`
   })

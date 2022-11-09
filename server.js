@@ -14,7 +14,8 @@ app.get('/',(req,res) => {
 
 app.post('/songs', async (req,res)=>{
     const song = new Song({
-        notes: req.body.songNotes
+        notes: req.body.songNotes,
+        songName: req.body.songName
       })
       await song.save()
     

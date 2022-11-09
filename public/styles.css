@@ -125,11 +125,13 @@ body{
 }
 .play-button,
 .save-button,
-.song-link{
+.song-link,
+.input-nameOfSong{
   display:none;
 }
 .play-button.show,
 .save-button.show,
-.song-link.show{
+.song-link.show,
+.input-nameOfSong.show{
   display: block;
 }
