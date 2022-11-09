@@ -18,12 +18,12 @@
             <button class="record-button button">Record</button>
             <button class="save-button button">Save</button>
           <% } else { %>
-            <a href="/" class="button">Record New Song</a>
+            <a href="/" class="record-button button">Record New Song</a>
           <% } %>
         <button class="play-button button <%= locals.song != null ? 'show' : '' %>">Play</button>
     </div>
     <input class="input-nameOfSong" id="nameOfSong" type="text"> 
-    <a href="#" class="button song-link">View Song </a>
+    <a href="#" class="buttons button song-link">View Song </a>
     <div class="piano ">
         <div data-key="1" data-note="C" class="key white">
             <span class="hints">Z</span>

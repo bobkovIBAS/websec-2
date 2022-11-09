@@ -135,3 +135,10 @@ body{
 .input-nameOfSong.show{
   display: block;
 }
+
+.input-nameOfSong{
+  border:none;
+  font-size: 2rem;
+  margin: 1rem;
+  border-radius: 5px;
+}

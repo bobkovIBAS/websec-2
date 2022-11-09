@@ -85,7 +85,6 @@ function startRecording(){
 }
 
 function stopRecording(){
-  playSong()
   playButton.classList.add('show')
   saveButton.classList.add('show')
   nameOfSongInput.classList.add('show')
