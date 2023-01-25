@@ -11,32 +11,87 @@ const playButton = document.querySelector('.play-button')
 const saveButton = document.querySelector('.save-button')
 const songLink = document.querySelector('.song-link')
 const nameOfSongInput = document.querySelector('.input-nameOfSong')
-
+const findButton = document.querySelector('.find-button')
 let recordingStartTime
 let songNotes = currentSong && currentSong.notes
 let songName = "Name Of Songs"
-
 const keyMap = [...keys].reduce((map, key) => {
   map[key.dataset.note] = key
   return map
 }, {})
+const whiteKeyIndex = [];
 
-
-console.log(currentSong)
 
 keys.forEach(key => {
   key.addEventListener('click', () => playNote(key))
-})
+  console.log('keys')
+}
+)
 
 document.addEventListener('keydown', e => {
   if (e.repeat) return
-  const key = e.key
+  let key = e.key
+  if(key == "я"){
+    key = "z";
+  }
+  if(key == "ч"){
+    key = "x";
+  }
+  if(key == "с"){
+    key = "c";
+  }
+  if(key == "м"){
+    key = "v";
+  }
+  if(key == "и"){
+    key = "b";
+  }
+  if(key == "т"){
+    key = "n";
+  }
+  if(key == "ь"){
+    key = "m";
+  }
+  if(key == "б"){
+    key = ",";
+  }
+  if(key == "ю"){
+    key = ".";
+  }
+  if(key == "."){
+    key = "/";
+  }
+  if(key == "ф"){
+    key = "a";
+  }
+  if(key == "ы"){
+    key = "s";
+  }
+  if(key == "в"){
+    key = "d";
+  }
+  if(key == "а"){
+    key = "f";
+  }
+  if(key == "п"){
+    key = "g";
+  }
+  if(key == "р"){
+    key = "h";
+  }
+  if(key == "о"){
+    key = "j";
+  }
+
   const whiteKeyIndex = WHITE_KEYS.indexOf(key)
   const blackKeyIndex = BLACK_KEYS.indexOf(key)
 
+
   if (whiteKeyIndex > -1) playNote(whiteKeys[whiteKeyIndex])
   if (blackKeyIndex > -1) playNote(blackKeys[blackKeyIndex])
-})
+}
+)
+
 
 function playNote(key) {
   if(isRecording()) recordNote(key.dataset.note)
@@ -59,6 +114,9 @@ recordButton.addEventListener('click' , Recording)
 }
 if (saveButton) {
 saveButton.addEventListener('click', saveSong)
+}
+if (findButton) {
+findButton.addEventListener('click' , findSongsByName)
 }
 playButton.addEventListener('click', playSong)
 
@@ -88,6 +146,9 @@ function stopRecording(){
   playButton.classList.add('show')
   saveButton.classList.add('show')
   nameOfSongInput.classList.add('show')
+  keys.forEach(key => {
+    key.removeEventListener('click', () => playNote(key))
+  })
 }
 
 function playSong(){
@@ -97,6 +158,7 @@ function playSong(){
       playNote(keyMap[note.key])
     },note.startTime)
   })
+  
 }
 
 function recordNote(note){
@@ -106,6 +168,7 @@ function recordNote(note){
   }
   )
 }
+
 function saveSong(){
   var nameOfSong = document.getElementById('nameOfSong').value;
   songName = nameOfSong;
@@ -114,3 +177,14 @@ function saveSong(){
     songLink.href = `/songs/${res.data._id}`
   })
 }
+
+function findSongsByName(){
+  var nameOfSong = document.getElementById('findSongByname').value;
+  songName = nameOfSong;
+  axios.post('/getSongByName',{songName}).then(res=>{
+    console.log(res.data._id)
+    songLink.classList.add('show')
+    songLink.href = `/songs/${res.data._id}`
+  })
+}
+   

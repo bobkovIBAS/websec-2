@@ -32,4 +32,11 @@ app.get('/songs/:id', async (req, res) => {
     res.render('index', { song: song })
   })
 
+app.post('/getSongByName', async (req, res) => {
+    let song
+    song = await Song.findOne({songName:req.body.songName})
+    console.log(song)
+    res.json(song)
+})
+
 app.listen(5000)
